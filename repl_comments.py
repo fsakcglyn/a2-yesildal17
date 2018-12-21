@@ -1,5 +1,5 @@
 from hashlib import sha256 #***
-all_comments = ''
+all_comments = []
 order = 1
 my_hash = 'b1e79532d5b97c775ed657e6aea1de1cb3728443c6b35ad80fa7c3c4ed0f4d1e' #***# i created this hash using code in this site: (https://bitbucket.org/damienjadeduff/hashing_example/raw/master/hash_password.py)
 def create_hash(password): #***
@@ -15,8 +15,11 @@ def comments(n):
 		pw = input('Please enter your password:')  # ***
 		hsh = create_hash(pw)  #***
 		if hsh == my_hash: 
-			all_comments += '\n' + str(order) + '.' + ' ' + str(n)
-			print('Previously entered comments: ',all_comments)
+			previous_comments = str(order) + '.' + ' ' + str(n)
+			all_comments.append(str(previous_comments))
+			print('Previously entered comments: ')
+			for x in all_comments:
+				print(x)
 			order += 1
 			return True 
 		else:
